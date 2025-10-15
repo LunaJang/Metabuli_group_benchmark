@@ -1,0 +1,2 @@
+/fast/jaebeom/benchmark/20250420-family-exclusion-set/databases/database-genome-paths.txt
+/fast/jaebeom/benchmark/20250420-family-exclusion-set/databases/metabuli/R220/taxid.accession2taxid delnodes.dmp  merged.dmp  names.dmp  nodes.dmp taxid.map
