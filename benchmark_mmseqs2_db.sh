@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH --job-name=mmseqs2
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task 32
+#SBATCH --time=10-23
+#SBATCH --partition=compute
+#SBATCH --nodelist=super001
+#SBATCH --output=/storage2/lunajang/workspace/metabuli_query_binning/benchmark_logs/%j_output.log
+#SBATCH --error=/storage2/lunajang/workspace/metabuli_query_binning/benchmark_logs/%j_error.log
+
+source ~/.bashrc
+conda init
+conda activate rust
+
+MMSEQS2="/home/lunajang/src/MMseqs2/build/bin/mmseqs"
+
+DBDIR="/storage/lunajang/metabuli/benchmark/mmseqs"
+FASTA_FILE="/storage/lunajang/metabuli/benchmark/database-genome.fna"
+GTDB_TAXDUMP="/storage/lunajang/metabuli/gtdb-taxdump/R220"
+MAPPING_FILE="/storage/lunajang/metabuli/gtdb-taxdump/R220/seqid2taxid.map"
+
+mkdir -p "${DBDIR}"
+
+"${MMSEQS2}" createdb \
+        "${FASTA_FILE}" \
+        "${DBDIR}"
+
+"${MMSEQS2}" createtaxdb \
+        "${DBDIR}" \
+        /mnt/scratch/lunajang/ \
+        --ncbi-tax-dump "${GTDB_TAXDUMP}" \
+        --tax-mapping-file "${MAPPING_FILE}"

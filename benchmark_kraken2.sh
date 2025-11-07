@@ -9,15 +9,15 @@
 #SBATCH --error=/home/lunajang/workspace/metabuli_query_binning/benchmark_logs/%j_error.log
 
 KRAKEN2="/home/lunajang/src/kraken2/bin/kraken2"
-DBDIR="/mnt/scratch/lunajang/metabuli/benchmark/kraken2"
+DBDIR="/storage/lunajang/metabuli/benchmark/kraken2"
 
-# RESULT_DIR="/mnt/scratch/lunajang/metabuli/benchmark/result/species_inclusion_test/kraken2"
-# QUERY1=/fast/lunajang/metabuli/benchmark/species-inclusion/query_1.fasta
-# QUERY2=/fast/lunajang/metabuli/benchmark/species-inclusion/query_2.fasta
+# RESULT_DIR="/storage2/lunajang/workspace/metabuli_query_binning/result/benchmark/species_inclusion_test/kraken2"
+# QUERY1=/storage/lunajang/metabuli/benchmark/species-inclusion/query_1.fasta
+# QUERY2=/storage/lunajang/metabuli/benchmark/species-inclusion/query_2.fasta
 
-RESULT_DIR="/mnt/scratch/lunajang/metabuli/benchmark/result/species_exclusion_test/kraken2"
-QUERY1=/fast/lunajang/metabuli/benchmark/species-exclusion/query_1.fasta
-QUERY2=/fast/lunajang/metabuli/benchmark/species-exclusion/query_2.fasta
+RESULT_DIR="/storage2/lunajang/workspace/metabuli_query_binning/result/benchmark/species_exclusion_test/kraken2"
+QUERY1=/storage/lunajang/metabuli/benchmark/species-exclusion/query_1.fasta
+QUERY2=/storage/lunajang/metabuli/benchmark/species-exclusion/query_2.fasta
 
 mkdir -p "${RESULT_DIR}"
 
