@@ -10,15 +10,16 @@
 
 METABULI="/home/lunajang/src/Metabuli/build/bin/metabuli"
 
-DBDIR="/storage/lunajang/metabuli/benchmark/metabuli"
-FASTA_LIST="/storage/lunajang/metabuli/benchmark/database-genome-paths.txt"
+FASTA_LIST="/storage/lunajang/metabuli/benchmark/reference/database-genome-paths.txt"
+TAXID_MAP="/storage/lunajang/metabuli/benchmark/reference/taxid.map"
 GTDB_TAXDUMP="/storage/lunajang/metabuli/gtdb-taxdump/R220"
+DBDIR="/storage/lunajang/metabuli/benchmark/db/metabuli"
 
 mkdir -p "${DBDIR}"/taxonomy
 
 "${METABULI}" build --gtdb 1 \
                     "${DBDIR}" \
                     "${FASTA_LIST}" \
-                    "${GTDB_TAXDUMP}/taxid.map" \
+                    "${TAXID_MAP}" \
                     --taxonomy-path "${GTDB_TAXDUMP}" \
                     --threads 32

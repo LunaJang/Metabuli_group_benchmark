@@ -9,17 +9,13 @@
 #SBATCH --error=/storage2/lunajang/workspace/metabuli_query_binning/benchmark_logs/%j_error.log
 
 KRAKEN2_BUILD="/home/lunajang/src/kraken2/bin/kraken2-build"
-FASTA_LIST="/storage/lunajang/metabuli/benchmark/database-genome-paths.txt"
-DBDIR="/storage/lunajang/metabuli/benchmark/kraken2"
+FASTA_LIST="/storage/lunajang/metabuli/benchmark/reference/database-genome-paths.txt"
+DBDIR="/storage/lunajang/metabuli/benchmark/db/kraken2"
 
 mkdir -p "${DBDIR}"/taxonomy
 
 cp /storage/lunajang/metabuli/gtdb-taxdump/R220/*.dmp "${DBDIR}"/taxonomy
-cp /storage/lunajang/metabuli/gtdb-taxdump/R220/taxid.accession2taxid "${DBDIR}"
-tail -n +2 "${DBDIR}"/taxid.accession2taxid \
-    | awk '{print $1"\t"$3; print $2"\t"$3}' \
-    | sort -u > "${DBDIR}"/seqid2taxid.map
-rm "${DBDIR}"/taxid.accession2taxid
+cp /storage/lunajang/metabuli/benchmark/reference/seqid2taxid.map "${DBDIR}"
 
 cat "${FASTA_LIST}" \
     | xargs -I{} \
